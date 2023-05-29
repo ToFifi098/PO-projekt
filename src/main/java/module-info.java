@@ -4,5 +4,6 @@ module com.example.poprojekt {
             
                             
     opens com.example.poprojekt to javafx.fxml;
+    opens com.example.poprojekt.FXController to javafx.fxml;
     exports com.example.poprojekt;
 }
