@@ -7,6 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
+import java.io.IOException;
+
+import static com.example.poprojekt.FXController.GridPane.gridPane;
+
 public class MainFrame {
 
     @FXML
@@ -19,8 +23,6 @@ public class MainFrame {
     private Label error;
     @FXML
     private BorderPane borderPane;
-
-    private GridPane gridPane;
 
     public void generate(ActionEvent event){
 
@@ -57,11 +59,11 @@ public class MainFrame {
 
     }
 
-    public void start(ActionEvent e){
+    public void start(ActionEvent e) throws IOException {
+        if(gridPane != null){
+            gridPane.update();
+        }
 
     }
 
-    public GridPane getGridPane() {
-        return gridPane;
-    }
 }

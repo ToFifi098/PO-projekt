@@ -1,5 +1,11 @@
 package com.example.poprojekt;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.layout.Pane;
+
+import java.io.IOException;
+
 public class Settings {
     private static int size;
     private static int wolfs;
@@ -28,4 +34,5 @@ public class Settings {
     public static void setSheep(int sheep) {
         Settings.sheep = sheep;
     }
+
 }
