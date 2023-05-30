@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Main extends Application {
 
     public static void main(String[] args) {
@@ -13,15 +15,22 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("MainFrame.fxml"));
-            Scene scene = new Scene(root);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainFrame.fxml")));
 
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("css.css")).toExternalForm());
+
+            primaryStage.setResizable(true);
             primaryStage.setScene(scene);
             primaryStage.show();
+
         }catch (Exception e){
             System.out.println(e);
         }
     }
+
+
 }
