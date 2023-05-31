@@ -5,10 +5,15 @@ import java.util.Random;
 
 public class Mapa {
 
-    ArrayList<ArrayList<Pole>> mapa;
-    public Mapa(int rozmiar){
+    private static Mapa gMap;
+
+    private ArrayList<ArrayList<Pole>> mapa;
+    public Mapa(){
         this.mapa = new ArrayList<>();
-        generujMape(rozmiar);
+    }
+
+    public static void setgMap(Mapa gMap) {
+        Mapa.gMap = gMap;
     }
 
     public void generujMape(int rozmiar) {
@@ -25,7 +30,7 @@ public class Mapa {
 
                 }
             }
-        for (int m = 0; m<2;m++){
+        for (int m = 0; m<Settings.getWolfs();m++){
             int x = random.nextInt(rozmiar);
             int y = random.nextInt(rozmiar);
             if (this.mapa.get(x).get(y).zwierze==null) {
@@ -36,7 +41,7 @@ public class Mapa {
             }
         }
 
-        for (int m = 0; m<2;m++){
+        for (int m = 0; m<Settings.getSheep();m++){
             int x = random.nextInt(rozmiar);
             int y = random.nextInt(rozmiar);
             if (this.mapa.get(x).get(y).zwierze==null) {
@@ -56,5 +61,13 @@ public class Mapa {
 
     public void ruch(Zwierze zwierze) {
 
+    }
+
+    public static Mapa getgMap() {
+        return gMap;
+    }
+
+    public ArrayList<ArrayList<Pole>> getMapa() {
+        return mapa;
     }
 }

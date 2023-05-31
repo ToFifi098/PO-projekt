@@ -2,10 +2,11 @@ package com.example.poprojekt;
 
 public class Wilk extends Zwierze {
     private static int ilosc = 0;
-    private String nazwa = "wilk";
+
     public Wilk() {
         ilosc++;
         id++;
+        nazwa = "Wilk";
     }
 
     public void zmniejsz_ilosc() {

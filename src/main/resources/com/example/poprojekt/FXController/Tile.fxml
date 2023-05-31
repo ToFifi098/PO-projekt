@@ -3,4 +3,4 @@
 <?import javafx.scene.layout.Pane?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1.0" minWidth="1.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #aeb2c6;" xmlns="http://javafx.com/javafx/19.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1.0" minWidth="1.0" prefHeight="315.0" prefWidth="354.0" style="-fx-background-color: #a64a1c;" xmlns="http://javafx.com/javafx/19.0.1" xmlns:fx="http://javafx.com/fxml/1" />

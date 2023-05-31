@@ -1,5 +1,7 @@
 package com.example.poprojekt.FXController;
 
+import com.example.poprojekt.Main;
+import com.example.poprojekt.Mapa;
 import com.example.poprojekt.Settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +37,7 @@ public class MainFrame {
                     size <= 0
                     || wolfs <= 0
                     || sheep <= 0
+                    || wolfs + sheep > size*size
             ){
                 error.setVisible(true);
             }
@@ -48,6 +51,10 @@ public class MainFrame {
                 gridPane = new GridPane(size);
                 borderPane.setCenter(gridPane);
 
+                Mapa.setgMap(new Mapa());
+                Mapa.getgMap().generujMape(Settings.getSize());
+
+                gridPane.update(Mapa.getgMap());
             }
 
         }catch (NumberFormatException n){
@@ -60,9 +67,7 @@ public class MainFrame {
     }
 
     public void start(ActionEvent e) throws IOException {
-        if(gridPane != null){
-            gridPane.update();
-        }
+
 
     }
 

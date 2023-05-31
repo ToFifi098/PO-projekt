@@ -11,4 +11,12 @@ public class Pole {
         this.y = y;
         this.trawa = new Trawa();
     }
+
+    public Trawa getTrawa(){
+        return trawa;
+    }
+
+    public Zwierze getZwierze(){
+        return zwierze;
+    }
 }

@@ -5,4 +5,8 @@ public class Trawa {
     public void regeneruj() {
 
     }
+
+    public boolean isCzyJest(){
+        return czyJest;
+    }
 }
