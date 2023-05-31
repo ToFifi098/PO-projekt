@@ -7,11 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        Mapa mapa = new Mapa(10);
     }
 
     @Override
@@ -30,6 +32,7 @@ public class Main extends Application {
         }catch (Exception e){
             System.out.println(e);
         }
+
     }
 
 
