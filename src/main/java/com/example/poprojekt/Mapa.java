@@ -60,7 +60,7 @@ public class Mapa {
     }
 
     public void ruch() {
-        Mapa.getgMap();
+        Mapa.getgMap(); //Mapa globalna
         //Trawa regeneruj
         checkOkolica();
         //Opcjonalnie rozmnorz
@@ -68,7 +68,15 @@ public class Mapa {
     }
 
     private void checkOkolica(){
-        //Zwierze zjedz
+        //sprawdza okolice
+        //po wywołaniu zjedz
+        //true -> sprawdza czy coś tam jest, jeżeli to przenosi, break
+        //false -> ;
+        //jeżli wszystkie false, czyli nie zjadł
+        //energia > 1, jeżli nie, zabijamy
+        //else
+        //losujemy pole, sprawdzamy czy coś tam jest, jeżeli nie to przenosimy
+        //energia --
     }
 
 

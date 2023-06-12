@@ -11,6 +11,8 @@ public class Settings {
     private static int wolfs;
     private static int sheep;
 
+
+
     public static int getSize() {
         return size;
     }

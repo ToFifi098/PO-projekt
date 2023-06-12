@@ -12,8 +12,11 @@ public class Wilk extends Zwierze {
     public void zmniejsz_ilosc() {
         ilosc--;
     }
-    public void zjedz() {
-
+    public boolean zjedz(Pole pole) {
+        //sprawdza czy jest Owca if(pole.getZwierze().getClass() == Owca.class)
+        //jeżeli tak, zjedz (usuwa owce z pola (zwierze = null), regeneruje energie) return true
+        //jeżeli nie return false
+        return false;
     }
 
     public void rozmnoz() {

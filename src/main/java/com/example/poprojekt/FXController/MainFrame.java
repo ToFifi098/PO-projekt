@@ -33,6 +33,7 @@ public class MainFrame {
             int wolfs = Integer.parseInt(tfWolfs.getText());
             int sheep = Integer.parseInt(tfSheep.getText());
 
+
             if(
                     size <= 0
                     || wolfs <= 0

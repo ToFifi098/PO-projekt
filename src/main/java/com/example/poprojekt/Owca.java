@@ -11,8 +11,11 @@ public class Owca extends Zwierze {
     public void zmniejsz_ilosc() {
         ilosc--;
     }
-    public void zjedz() {
-
+    public boolean zjedz(Pole pole) {
+        //sprawdza czy jest trawa
+        //jeżeli tak, czy jest tam coś inneg (zwierze != null), zjedz, return true
+        //jeżeli nie return false
+        return false;
     }
 
     public void rozmnoz() {
