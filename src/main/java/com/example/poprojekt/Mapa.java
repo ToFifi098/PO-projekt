@@ -59,9 +59,19 @@ public class Mapa {
         return false;
     }
 
-    public void ruch(Zwierze zwierze) {
+    public void ruch() {
+        Mapa.getgMap();
+        //Trawa regeneruj
+        checkOkolica();
+        //Opcjonalnie rozmnorz
 
     }
+
+    private void checkOkolica(){
+        //Zwierze zjedz
+    }
+
+
 
     public static Mapa getgMap() {
         return gMap;

@@ -47,10 +47,10 @@ public class GridPane extends javafx.scene.layout.GridPane {
                     tile.setStyle("-fx-background-color: green");
                 }
                 if(mapa.getMapa().get(i).get(j).getZwierze() != null){
-                    if(mapa.getMapa().get(i).get(j).getZwierze().nazwa.equals("Owca")){
+                    if(mapa.getMapa().get(i).get(j).getZwierze().getClass() == Owca.class){
                         tile.setStyle("-fx-background-color: white");
                     }
-                    else if (mapa.getMapa().get(i).get(j).getZwierze().nazwa.equals("Wilk")){
+                    else if (mapa.getMapa().get(i).get(j).getZwierze().getClass() == Wilk.class){
                         tile.setStyle("-fx-background-color: gray");
                     }
                 }
