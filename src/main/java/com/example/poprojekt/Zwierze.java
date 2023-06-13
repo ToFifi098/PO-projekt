@@ -6,10 +6,6 @@ public abstract class Zwierze {
     public String nazwa;
     public boolean moved;
 
-    public static void zmniejsz_ilosc(){
-
-    };
-
     public abstract boolean zjedz(Pole pole);
     public abstract void rozmnoz();
 }

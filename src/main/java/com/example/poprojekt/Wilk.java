@@ -6,6 +6,10 @@ public class Wilk extends Zwierze {
         return ilosc;
     }
 
+    public static void setIlosc(int ilosc) {
+        Wilk.ilosc = ilosc;
+    }
+
     public Wilk() {
         ilosc++;
         id++;

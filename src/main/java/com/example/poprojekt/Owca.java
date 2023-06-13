@@ -32,4 +32,8 @@ public class Owca extends Zwierze {
     public static int getOwca(){
         return ilosc;
     }
+
+    public static void setIlosc(int ilosc) {
+        Owca.ilosc = ilosc;
+    }
 }

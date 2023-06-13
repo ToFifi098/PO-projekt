@@ -1,6 +1,6 @@
 package com.example.poprojekt;
 
-import com.example.poprojekt.FXController.GridPane;
+
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,6 +19,9 @@ public class Mapa {
     }
 
     public void generujMape(int rozmiar) {
+        Owca.setIlosc(0);
+        Wilk.setIlosc(0);
+
         Random random = new Random();
 
         for (int i = 0; i < rozmiar; i++) {
@@ -57,10 +60,6 @@ public class Mapa {
         }
 
 
-    public boolean koniec() {
-        return false;
-    }
-
     public static void ruch() {
 
         for(int i = 0; i < Settings.getSize(); i++){
@@ -71,8 +70,6 @@ public class Mapa {
                 if(pole.getZwierze() != null) checkOkolica(i, j, pole);
             }
         }
-
-
 
     }
 
@@ -127,8 +124,8 @@ public class Mapa {
         }
 
 
-        int directionX = 0;
-        int directionY = 0;
+        int directionX;
+        int directionY;
         do {
             directionX = random.nextInt(3) - 1;
             directionY = random.nextInt(3) - 1;
