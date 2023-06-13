@@ -68,8 +68,8 @@ public class MainFrame {
     }
 
     public void start(ActionEvent e) throws IOException {
-
-
+        Mapa.ruch();
+        gridPane.update(Mapa.getgMap());
     }
 
 }

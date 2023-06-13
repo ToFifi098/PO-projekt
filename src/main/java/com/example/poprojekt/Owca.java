@@ -6,6 +6,7 @@ public class Owca extends Zwierze {
         ilosc++;
         id++;
         nazwa = "Owca";
+        this.moved = false;
     }
 
     public static void zmniejsz_ilosc() {
@@ -15,9 +16,9 @@ public class Owca extends Zwierze {
         //sprawdza czy jest trawa
         //jeżeli tak, czy jest tam coś inneg (zwierze != null), zjedz, return true
         //jeżeli nie return false
-        if(pole.getTrawa().isCzyJest()==true) {
-            if(pole.zwierze!=null) {
-                pole.trawa.czyJest=false;
+        if(pole.getTrawa().isCzyJest()) {
+            if(pole.zwierze==null) {
+                pole.trawa.zjedz();
                 energia.regeneruj();
                 return true;
             }

@@ -21,4 +21,8 @@ public class Pole {
     public Zwierze getZwierze(){
         return zwierze;
     }
+
+    public void setZwierze(Zwierze zwierze) {
+        this.zwierze = zwierze;
+    }
 }

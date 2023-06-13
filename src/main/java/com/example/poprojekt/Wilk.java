@@ -7,6 +7,7 @@ public class Wilk extends Zwierze {
         ilosc++;
         id++;
         nazwa = "Wilk";
+        this.moved = false;
     }
 
     public static void zmniejsz_ilosc() {
@@ -16,11 +17,13 @@ public class Wilk extends Zwierze {
         //sprawdza czy jest Owca if(pole.getZwierze().getClass() == Owca.class)
         //jeżeli tak, zjedz (usuwa owce z pola (zwierze = null), regeneruje energie) return true
         //jeżeli nie return false
-        if(pole.getZwierze().getClass()==Owca.class) {
-            pole.zwierze=null;
-            Owca.zmniejsz_ilosc();
-            energia.regeneruj();
-            return true;
+        if(pole.getZwierze() != null){
+            if(pole.getZwierze().getClass()==Owca.class) {
+                pole.zwierze=null;
+                Owca.zmniejsz_ilosc();
+                energia.regeneruj();
+                return true;
+            }
         }
         return false;
     }

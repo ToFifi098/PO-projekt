@@ -1,5 +1,7 @@
 package com.example.poprojekt;
 
+import com.example.poprojekt.FXController.GridPane;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -59,24 +61,95 @@ public class Mapa {
         return false;
     }
 
-    public void ruch() {
-        Mapa.getgMap(); //Mapa globalna
-        //Trawa regeneruj
-        checkOkolica();
-        //Opcjonalnie rozmnorz
+    public static void ruch() {
+
+        for(int i = 0; i < Settings.getSize(); i++){
+            for (int j = 0; j < Settings.getSize(); j++){
+                Pole pole = Mapa.getgMap().getMapa().get(i).get(j);
+                pole.getTrawa().regeneruj();
+
+                if(pole.getZwierze() != null) checkOkolica(i, j, pole);
+            }
+        }
+
+
 
     }
 
-    private void checkOkolica(){
-        //sprawdza okolice
-        //po wywołaniu zjedz
-        //true -> sprawdza czy coś tam jest, jeżeli to przenosi, break
-        //false -> ;
-        //jeżli wszystkie false, czyli nie zjadł
-        //energia > 1, jeżli nie, zabijamy
-        //else
-        //losujemy pole, sprawdzamy czy coś tam jest, jeżeli nie to przenosimy
-        //energia --
+    private static final int[][] checkOrder =
+            {{-1, 0, 1}, {0, -1, 1}, {0, 1, -1}, {-1, 1, 0}, {1, 0, -1}, {1,-1,0}};
+
+    private static void checkOkolica(int i, int j, Pole pole){
+
+        if(pole.getZwierze().moved){
+            pole.getZwierze().moved = false;
+            return;
+        }
+
+        Random random = new Random();
+
+        int[] checkOrderX = checkOrder[random.nextInt(6)];
+        int[] checkOrderY = checkOrder[random.nextInt(6)];
+
+        for(int k = 0; k < 3; k++){
+            int x = Math.min(Math.max(0, i + checkOrderX[k]), Settings.getSize()-1);
+            for(int l =0; l < 3; l++){
+                int y = Math.min(Math.max(0, j + checkOrderY[l]), Settings.getSize()-1);
+
+                if(x == i && y == j) continue;
+
+                Pole wanted = gMap.getMapa().get(x).get(y);
+                boolean state = pole.getZwierze().zjedz(wanted);
+
+                if(state){
+                    if(wanted.getZwierze() == null){
+                        if(
+                                (x == i && y > j) ||
+                                (x > i)
+
+                        ){
+                            pole.getZwierze().moved = true;
+                        }
+                        wanted.setZwierze(pole.getZwierze());
+                        pole.setZwierze(null);
+                        return;
+                    }
+                }
+            }
+        }
+
+        if(pole.getZwierze().energia.energia <= 1){
+            Zwierze.zmniejsz_ilosc();
+            pole.setZwierze(null);
+            return;
+        }
+
+
+        int directionX = 0;
+        int directionY = 0;
+        do {
+            directionX = random.nextInt(3) - 1;
+            directionY = random.nextInt(3) - 1;
+        }while (directionY == 0 && directionX == 0);
+
+        int x = Math.min(Math.max(0, i + directionX), Settings.getSize()-1);
+        int y = Math.min(Math.max(0, j + directionY), Settings.getSize()-1);
+
+
+        Pole gPole = gMap.getMapa().get(x).get(y);
+        if(gPole.getZwierze() == null){
+            if(
+                    (x == i && y > j) ||
+                            (x > i)
+
+            ){
+                pole.getZwierze().moved = true;
+            }
+
+            pole.getZwierze().energia.energia--;
+            gPole.setZwierze(pole.getZwierze());
+            pole.setZwierze(null);
+        }
     }
 
 

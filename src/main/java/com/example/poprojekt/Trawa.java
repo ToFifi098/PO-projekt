@@ -14,6 +14,12 @@ public class Trawa {
         }
     }
 
+    public void zjedz(){
+        czyJest = false;
+        licznik = 0;
+    }
+
+
     public boolean isCzyJest(){
         return czyJest;
     }

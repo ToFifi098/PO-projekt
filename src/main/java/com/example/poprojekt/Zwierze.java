@@ -2,8 +2,9 @@ package com.example.poprojekt;
 
 public abstract class Zwierze {
     public int id = 0;
-    public Energia energia;
+    public Energia energia = new Energia();
     public String nazwa;
+    public boolean moved;
 
     public static void zmniejsz_ilosc() {
 
