@@ -2,6 +2,9 @@ package com.example.poprojekt;
 
 public class Owca extends Zwierze {
     private static int ilosc = 0;
+    public static int getOwca(){
+        return ilosc;
+    }
     public Owca() {
         ilosc++;
         id++;
