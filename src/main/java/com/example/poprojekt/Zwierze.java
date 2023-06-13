@@ -2,7 +2,7 @@ package com.example.poprojekt;
 
 public abstract class Zwierze {
     public int id = 0;
-    public Energia energia = new Energia();
+    public Energia energia;
     public String nazwa;
     public boolean moved;
 

@@ -8,7 +8,7 @@ public class Trawa {
         if(czyJest==false) {
             licznik++;
         }
-        if(licznik==5) {
+        if(licznik==Settings.getGrassRate()) {
             czyJest = true;
             licznik=0;
         }

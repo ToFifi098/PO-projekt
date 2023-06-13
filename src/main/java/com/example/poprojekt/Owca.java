@@ -7,6 +7,7 @@ public class Owca extends Zwierze {
         id++;
         nazwa = "Owca";
         this.moved = false;
+        this.energia = new Energia(Settings.getMaxEnergySheep());
     }
 
     public static void zmniejsz_ilosc() {

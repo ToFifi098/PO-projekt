@@ -11,7 +11,10 @@ public class Settings {
     private static int wolfs;
     private static int sheep;
 
+    private static int grassRate = 15;
 
+    private static int maxEnergySheep = 5;
+    private static int maxEnergyWolf = 15;
 
     public static int getSize() {
         return size;
@@ -37,4 +40,15 @@ public class Settings {
         Settings.sheep = sheep;
     }
 
+    public static int getGrassRate() {
+        return grassRate;
+    }
+
+    public static int getMaxEnergySheep() {
+        return maxEnergySheep;
+    }
+
+    public static int getMaxEnergyWolf() {
+        return maxEnergyWolf;
+    }
 }

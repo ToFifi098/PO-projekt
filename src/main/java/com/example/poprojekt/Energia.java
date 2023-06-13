@@ -2,9 +2,10 @@ package com.example.poprojekt;
 
 public class Energia {
     public int energia;
-    private int maxEnergia = 15;
+    private int maxEnergia;
 
-    public Energia() {
+    public Energia(int maxEnergia) {
+        this.maxEnergia = maxEnergia;
         this.energia = maxEnergia;
     }
 
