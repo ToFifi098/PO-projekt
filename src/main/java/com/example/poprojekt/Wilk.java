@@ -9,13 +9,19 @@ public class Wilk extends Zwierze {
         nazwa = "Wilk";
     }
 
-    public void zmniejsz_ilosc() {
+    public static void zmniejsz_ilosc() {
         ilosc--;
     }
     public boolean zjedz(Pole pole) {
         //sprawdza czy jest Owca if(pole.getZwierze().getClass() == Owca.class)
         //jeżeli tak, zjedz (usuwa owce z pola (zwierze = null), regeneruje energie) return true
         //jeżeli nie return false
+        if(pole.getZwierze().getClass()==Owca.class) {
+            pole.zwierze=null;
+            Owca.zmniejsz_ilosc();
+            energia.regeneruj();
+            return true;
+        }
         return false;
     }
 

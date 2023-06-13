@@ -5,7 +5,10 @@ public abstract class Zwierze {
     public Energia energia;
     public String nazwa;
 
-    public abstract void zmniejsz_ilosc();
+    public static void zmniejsz_ilosc() {
+
+    }
+
     public abstract boolean zjedz(Pole pole);
     public abstract void rozmnoz();
 }
