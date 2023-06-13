@@ -10,9 +10,7 @@ public class Settings {
     private static int size;
     private static int wolfs;
     private static int sheep;
-
     private static int grassRate = 15;
-
     private static int maxEnergySheep = 5;
     private static int maxEnergyWolf = 15;
 

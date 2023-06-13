@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class GridPane extends javafx.scene.layout.GridPane {
 
-    static GridPane gridPane;
+    static public GridPane gridPane;
     public GridPane(int x) {
         this.setGridLinesVisible(true);
         for (int i = 0; i < Settings.getSize(); i++){

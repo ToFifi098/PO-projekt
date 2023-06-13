@@ -2,6 +2,7 @@ package com.example.poprojekt.FXController;
 
 import com.example.poprojekt.Main;
 import com.example.poprojekt.Mapa;
+import com.example.poprojekt.Rozgrywka;
 import com.example.poprojekt.Settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -67,9 +68,10 @@ public class MainFrame {
 
     }
 
-    public void start(ActionEvent e) throws IOException {
-        Mapa.ruch();
-        gridPane.update(Mapa.getgMap());
+    public void start(ActionEvent e) throws IOException, InterruptedException {
+       Rozgrywka rozgrywka = new Rozgrywka();
+
+       rozgrywka.start();
     }
 
 }

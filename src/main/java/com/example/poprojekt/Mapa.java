@@ -119,7 +119,9 @@ public class Mapa {
         }
 
         if(pole.getZwierze().energia.energia <= 1){
-            Zwierze.zmniejsz_ilosc();
+            if(pole.getZwierze().getClass() == Owca.class) Owca.zmniejsz_ilosc();
+            if(pole.getZwierze().getClass() == Wilk.class) Wilk.zmniejsz_ilosc();
+
             pole.setZwierze(null);
             return;
         }
