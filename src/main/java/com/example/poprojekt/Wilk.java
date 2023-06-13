@@ -2,6 +2,9 @@ package com.example.poprojekt;
 
 public class Wilk extends Zwierze {
     private static int ilosc = 0;
+    public static int getWilk(){
+        return ilosc;
+    }
 
     public Wilk() {
         ilosc++;
