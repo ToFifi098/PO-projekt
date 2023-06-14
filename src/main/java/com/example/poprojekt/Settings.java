@@ -12,8 +12,12 @@ public class Settings {
     private static int sheep;
     private static int grassRate = 15;
     private static int maxEnergySheep = 5;
-    private static int maxEnergyWolf = 15;
+    private static int maxEnergyWolf = 10;
+    private static int multiplyChance= 20;
 
+    public static int getMultiplyChance() {
+        return multiplyChance;
+    }
     public static int getSize() {
         return size;
     }

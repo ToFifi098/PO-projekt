@@ -6,8 +6,6 @@ public class Pole {
     Zwierze zwierze;
     Trawa trawa;
 
-
-
     public Pole(int x, int y) {
         this.x = x;
         this.y = y;

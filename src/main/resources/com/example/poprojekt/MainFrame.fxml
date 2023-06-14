@@ -35,7 +35,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="15.0" layoutY="334.0" mnemonicParsing="false" onAction="#start" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: #b2c6ae; -fx-padding: 10;" text="Start">
+                  <Button fx:id="start" layoutX="15.0" layoutY="334.0" mnemonicParsing="false" onAction="#start" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: #b2c6ae; -fx-padding: 10;" text="Start">
                      <font>
                         <Font size="14.0" />
                      </font>

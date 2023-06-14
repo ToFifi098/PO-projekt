@@ -7,5 +7,5 @@ public abstract class Zwierze {
     public boolean moved;
 
     public abstract boolean zjedz(Pole pole);
-    public abstract void rozmnoz();
+    public abstract Zwierze rozmnoz();
 }

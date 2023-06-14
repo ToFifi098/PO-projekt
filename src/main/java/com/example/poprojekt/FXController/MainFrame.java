@@ -6,6 +6,7 @@ import com.example.poprojekt.Rozgrywka;
 import com.example.poprojekt.Settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -26,9 +27,11 @@ public class MainFrame {
     private Label error;
     @FXML
     private BorderPane borderPane;
+    @FXML
+    private Button start;
 
     public void generate(ActionEvent event){
-
+        start.setText("Start");
         try {
             int size = Integer.parseInt(tfSize.getText());
             int wolfs = Integer.parseInt(tfWolfs.getText());
@@ -68,10 +71,19 @@ public class MainFrame {
 
     }
 
+    Rozgrywka rozgrywka = null;
     public void start(ActionEvent e) throws IOException, InterruptedException {
-       Rozgrywka rozgrywka = new Rozgrywka();
 
-       rozgrywka.start();
+        if(start.getText().equals("Start")){
+            rozgrywka = new Rozgrywka();
+            rozgrywka.start();
+            start.setText("Stop");
+        }
+        else {
+            rozgrywka.setStop();
+            start.setText("Start");
+        }
+
     }
 
 }

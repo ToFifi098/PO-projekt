@@ -33,7 +33,7 @@ public class Wilk extends Zwierze {
         return false;
     }
 
-    public void rozmnoz() {
-
+    public Zwierze rozmnoz() {
+        return new Wilk();
     }
 }

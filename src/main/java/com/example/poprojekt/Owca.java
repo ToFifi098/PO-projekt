@@ -25,8 +25,8 @@ public class Owca extends Zwierze {
         return false;
     }
 
-    public void rozmnoz() {
-
+    public Zwierze rozmnoz() {
+        return new Owca();
     }
 
     public static int getOwca(){

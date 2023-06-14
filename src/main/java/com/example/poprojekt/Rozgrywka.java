@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 
 public class Rozgrywka extends Thread {
     int numer = 0;
+    boolean stop = false;
 
     @Override
     public void run()  {
@@ -38,9 +39,14 @@ public class Rozgrywka extends Thread {
                 throw new RuntimeException(e);
             }
 
-        } while (Owca.getOwca() > 0 && Wilk.getWilk() > 0);
+        } while ( (Owca.getOwca() > 0 && Wilk.getWilk() > 0) && !stop);
         zapis.close();
     }
+
+    public void setStop(){
+        this.stop = !stop;
+    }
+
 
     public Rozgrywka(){
 

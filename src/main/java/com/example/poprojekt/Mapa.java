@@ -109,6 +109,12 @@ public class Mapa {
                         }
                         wanted.setZwierze(pole.getZwierze());
                         pole.setZwierze(null);
+
+                        if(random.nextInt(100) < Settings.getMultiplyChance()){
+                            multiply(x, y, wanted.zwierze.rozmnoz(), i, j);
+                        }
+
+
                         return;
                     }
                 }
@@ -151,6 +157,34 @@ public class Mapa {
         }
     }
 
+    public static void multiply(int i, int j, Zwierze zwierze, int a, int b){
+        Random random = new Random();
+
+        int directionX;
+        int directionY;
+        do {
+            directionX = random.nextInt(3) - 1;
+            directionY = random.nextInt(3) - 1;
+        }while (directionY == 0 && directionX == 0);
+
+        int x = Math.min(Math.max(0, i + directionX), Settings.getSize()-1);
+        int y = Math.min(Math.max(0, j + directionY), Settings.getSize()-1);
+
+        if(gMap.getMapa().get(x).get(y).getZwierze() == null){
+            if(
+                    (x == a && y > b) ||
+                            (x > a)
+            ){
+                zwierze.moved = true;
+
+            }
+            gMap.getMapa().get(x).get(y).setZwierze(zwierze);
+        }
+        else {
+            if(zwierze.getClass() == Owca.class) Owca.zmniejsz_ilosc();
+            if(zwierze.getClass() == Wilk.class) Wilk.zmniejsz_ilosc();
+        }
+    }
 
 
     public static Mapa getgMap() {
