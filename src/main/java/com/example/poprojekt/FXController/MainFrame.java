@@ -59,7 +59,7 @@ public class MainFrame {
                 Mapa.setgMap(new Mapa());
                 Mapa.getgMap().generujMape(Settings.getSize());
 
-                gridPane.update(Mapa.getgMap());
+                gridPane.generate(Mapa.getgMap());
             }
 
         }catch (NumberFormatException n){
@@ -74,6 +74,7 @@ public class MainFrame {
     Rozgrywka rozgrywka = null;
     public void start(ActionEvent e) throws IOException, InterruptedException {
 
+        gridPane.update(Mapa.getgMap());
         if(start.getText().equals("Start")){
             rozgrywka = new Rozgrywka();
             rozgrywka.start();

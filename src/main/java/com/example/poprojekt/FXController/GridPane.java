@@ -1,14 +1,17 @@
 package com.example.poprojekt.FXController;
 
 import com.example.poprojekt.*;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class GridPane extends javafx.scene.layout.GridPane {
@@ -32,32 +35,56 @@ public class GridPane extends javafx.scene.layout.GridPane {
         }
     }
 
-    public void update(Mapa mapa) throws IOException {
-        int x = Settings.getSize();
-
-
-
+    public void generate(Mapa mapa) throws IOException {
         for (int i = 0; i < mapa.getMapa().size(); i++){
             for(int j = 0; j < mapa.getMapa().get(i).size(); j++){
                 Pane tile = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Tile.fxml")));
                 tile.setMaxHeight(Double.MAX_VALUE);
                 tile.setMaxWidth(Double.MAX_VALUE);
 
-                if(mapa.getMapa().get(i).get(j).getTrawa().isCzyJest()){
-                    tile.setStyle("-fx-background-color: green");
-                }
-                if(mapa.getMapa().get(i).get(j).getZwierze() != null){
-                    if(mapa.getMapa().get(i).get(j).getZwierze().getClass() == Owca.class){
-                        tile.setStyle("-fx-background-color: white");
-                    }
-                    else if (mapa.getMapa().get(i).get(j).getZwierze().getClass() == Wilk.class){
-                        tile.setStyle("-fx-background-color: gray");
-                    }
-                }
+                String color = whatColor(mapa.getMapa().get(i).get(j));
+                tile.setStyle("-fx-background-color: " + color + ";");
 
                 gridPane.add(tile, i , j);
             }
         }
     }
+
+
+    public void update(Mapa mapa){
+        List<Node> nodeList = gridPane.getChildren();
+        int k = 1;
+
+
+        for(int i = 0; i < mapa.getMapa().size(); i++){
+            for(int j = 0; j < mapa.getMapa().size(); j++){
+
+
+
+                Node tile = nodeList.get(k);
+
+                String color = whatColor(mapa.getMapa().get(i).get(j));
+
+                tile.setStyle("-fx-background-color: " + color + ";");
+
+                k++;
+
+            }
+        }
+    }
+
+    private String whatColor(Pole pole){
+        if(pole.getZwierze() != null){
+            if(pole.getZwierze().getClass() == Owca.class) return "white";
+            else if(pole.getZwierze().getClass() == Wilk.class) return "gray";
+        }
+        else {
+            if(pole.getTrawa() .isCzyJest()) return "green";
+        }
+        return "#a64a1c";
+    }
+
+
+
 
 }

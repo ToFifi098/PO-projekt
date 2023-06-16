@@ -11,27 +11,31 @@ public class Rozgrywka extends Thread {
     int numer = 0;
     boolean stop = false;
 
+
+
+
     @Override
     public void run()  {
         PrintWriter zapis;
+
+
         try {
             zapis = new PrintWriter("zapis.txt");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
 
+        zapis.println("Numer,Owca,Wilk");
+
         do {
             numer++;
             Mapa.ruch();
                 Platform.runLater(() -> {
-                    try {
-                        GridPane.gridPane.update(Mapa.getgMap());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    GridPane.gridPane.update(Mapa.getgMap());
                 });
 
-            zapis.println("\nnumer partii: " + numer + "\nilość owiec: " + Owca.getOwca() + "\nilość wilków: " + Wilk.getWilk());
+            //zapis.println("\nnumer partii: " + numer + "\nilość owiec: " + Owca.getOwca() + "\nilość wilków: " + Wilk.getWilk());
+            zapis.println(numer + "," + Owca.getOwca() + "," + Wilk.getWilk());
 
             try {
                 Thread.sleep(200);
@@ -49,12 +53,6 @@ public class Rozgrywka extends Thread {
 
 
     public Rozgrywka(){
-
-//        if (Wilk.getWilk()>Owca.getOwca()){
-//            zapis.println("Wilki wygrały");}
-//        else {
-//            zapis.println("Owce wygrały");}
-//        }
 
     }
 }
