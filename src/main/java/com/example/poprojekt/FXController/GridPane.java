@@ -15,6 +15,9 @@ import java.util.Objects;
 
 public class GridPane extends javafx.scene.layout.GridPane {
 
+    /**
+     * Globalny grid
+     */
     static public GridPane gridPane;
 
     /**
@@ -42,6 +45,7 @@ public class GridPane extends javafx.scene.layout.GridPane {
     /**
      * Metoda generuje z mapy pola siatki oraz dodaje je do statycznej siatki
      * @param mapa mapa z której generowane są pola
+     * @throws IOException błąd wejścia, Tile.fxml
      */
 
     public void generate(Mapa mapa) throws IOException {

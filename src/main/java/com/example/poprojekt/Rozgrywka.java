@@ -2,22 +2,23 @@ package com.example.poprojekt;
 
 import com.example.poprojekt.FXController.GridPane;
 import javafx.application.Platform;
-
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
+
+/**
+ * Główna pętla odpowiadająca za symulację
+ */
 
 public class Rozgrywka extends Thread {
     int numer = 0;
     boolean stop = false;
 
-
-
-
+    /**
+     * Rozpoczyna symulację, wywoływana poprzez .start()
+     */
     @Override
     public void run()  {
         PrintWriter zapis;
-
 
         try {
             zapis = new PrintWriter("zapis.txt");
@@ -30,9 +31,7 @@ public class Rozgrywka extends Thread {
         do {
             numer++;
             Mapa.ruch();
-                Platform.runLater(() -> {
-                    GridPane.gridPane.update(Mapa.getgMap());
-                });
+                Platform.runLater(() -> GridPane.gridPane.update(Mapa.getgMap()));
 
             //zapis.println("\nnumer partii: " + numer + "\nilość owiec: " + Owca.getOwca() + "\nilość wilków: " + Wilk.getWilk());
             zapis.println(numer + "," + Owca.getOwca() + "," + Wilk.getWilk());
@@ -47,11 +46,16 @@ public class Rozgrywka extends Thread {
         zapis.close();
     }
 
+    /**
+     * Wywołana zatrzymuje symulację
+     */
     public void setStop(){
         this.stop = !stop;
     }
 
-
+    /**
+     * Tworzy nowy obiekt Rozgrywka
+     */
     public Rozgrywka(){
 
     }

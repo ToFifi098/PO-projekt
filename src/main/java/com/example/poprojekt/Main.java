@@ -7,17 +7,28 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.Objects;
-import java.util.Random;
+
+/**
+ * Główna klasa aplikacji
+ */
 
 public class Main extends Application {
 
-
+    /**
+     * Main
+     * @param args argumenty startowe
+     */
     public static void main(String[] args) {
-        //Wczytanie ustawień
-
         launch(args);
     }
 
+    /**
+     * Java FX
+     * @param primaryStage the primary stage for this application, onto which
+     * the application scene can be set.
+     * Applications may create other stages, if needed, but they will not be
+     * primary stages.
+     */
     @Override
     public void start(Stage primaryStage){
         try {
@@ -31,8 +42,7 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
 
-        }catch (Exception e){
-            System.out.println(e);
+        }catch (Exception ignored){
         }
     }
 

@@ -9,6 +9,15 @@ public abstract class Zwierze {
     public String nazwa;
     public boolean moved;
 
+    /**
+     * Sprawdza czy zwierze może zjeść na danym polu
+     * @param pole pole dla którego wykonywana jest operacja
+     * @return true jeżeli zjadło pokarm
+     */
     public abstract boolean zjedz(Pole pole);
+
+    /**
+     * @return nowe Zwierze
+     */
     public abstract Zwierze rozmnoz();
 }

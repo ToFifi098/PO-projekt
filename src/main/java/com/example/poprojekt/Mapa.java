@@ -45,7 +45,7 @@ public class Mapa {
             this.mapa.add(new ArrayList<>());
             for (int j = 0; j < rozmiar; j++) {
                 int losowaLiczba = random.nextInt(2);
-                this.mapa.get(i).add(new Pole(i,j));
+                this.mapa.get(i).add(new Pole());
                 if (losowaLiczba==0) {
                     this.mapa.get(i).get(j).trawa.czyJest = true;
                 }
