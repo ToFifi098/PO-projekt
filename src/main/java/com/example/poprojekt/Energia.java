@@ -2,7 +2,7 @@ package com.example.poprojekt;
 
 public class Energia {
     public int energia;
-    private int maxEnergia;
+    private final int maxEnergia;
 
     public Energia(int maxEnergia) {
         this.maxEnergia = maxEnergia;

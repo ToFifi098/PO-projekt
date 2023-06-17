@@ -1,7 +1,10 @@
 package com.example.poprojekt;
 
+/**
+ * Klasa abstrakcyjna zwierze
+ */
+
 public abstract class Zwierze {
-    public int id = 0;
     public Energia energia;
     public String nazwa;
     public boolean moved;

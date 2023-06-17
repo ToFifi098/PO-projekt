@@ -1,22 +1,26 @@
 package com.example.poprojekt.FXController;
 
 import com.example.poprojekt.*;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+/**
+ * Klasa odpowiadająca za operacje na siatce wyświetlającej postęp symulacji
+ */
 
 public class GridPane extends javafx.scene.layout.GridPane {
 
     static public GridPane gridPane;
+
+    /**
+     * Tworzy nową siatkę o wymiarach x na x
+     * @param x rozmiar siatki
+     */
     public GridPane(int x) {
         this.setGridLinesVisible(true);
         for (int i = 0; i < Settings.getSize(); i++){
@@ -35,6 +39,11 @@ public class GridPane extends javafx.scene.layout.GridPane {
         }
     }
 
+    /**
+     * Metoda generuje z mapy pola siatki oraz dodaje je do statycznej siatki
+     * @param mapa mapa z której generowane są pola
+     */
+
     public void generate(Mapa mapa) throws IOException {
         for (int i = 0; i < mapa.getMapa().size(); i++){
             for(int j = 0; j < mapa.getMapa().get(i).size(); j++){
@@ -50,6 +59,10 @@ public class GridPane extends javafx.scene.layout.GridPane {
         }
     }
 
+    /**
+     * Metoda aktualizuje aktualną siatkę na bazie mapy
+     * @param mapa mapa z której jest aktualizowana siatka
+     */
 
     public void update(Mapa mapa){
         List<Node> nodeList = gridPane.getChildren();
@@ -72,6 +85,12 @@ public class GridPane extends javafx.scene.layout.GridPane {
             }
         }
     }
+
+    /**
+     * Metoda zwracająca kolor w zależności od zwierzęcia oraz trawy
+     * @param pole Pole dla którego sprawdzany jest kolor
+     * @return kolor dla danego typu pola
+     */
 
     private String whatColor(Pole pole){
         if(pole.getZwierze() != null){

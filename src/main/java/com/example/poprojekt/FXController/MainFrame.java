@@ -1,20 +1,17 @@
 package com.example.poprojekt.FXController;
 
-import com.example.poprojekt.Main;
 import com.example.poprojekt.Mapa;
 import com.example.poprojekt.Rozgrywka;
 import com.example.poprojekt.Settings;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
-import java.io.IOException;
-
-import static com.example.poprojekt.FXController.GridPane.gridPane;
-
+/**
+ * Szkielet oraz obsługa I/O
+ */
 public class MainFrame {
 
     @FXML
@@ -30,7 +27,11 @@ public class MainFrame {
     @FXML
     private Button start;
 
-    public void generate(ActionEvent event){
+    /**
+     * Metoda wywoływana przez przycisk Generuj
+     */
+
+    public void generate(){
         start.setText("Start");
         try {
             int size = Integer.parseInt(tfSize.getText());
@@ -53,28 +54,32 @@ public class MainFrame {
                 Settings.setWolfs(wolfs);
                 Settings.setSheep(sheep);
 
-                gridPane = new GridPane(size);
-                borderPane.setCenter(gridPane);
+                GridPane.gridPane = new GridPane(size);
+                borderPane.setCenter(GridPane.gridPane);
 
                 Mapa.setgMap(new Mapa());
                 Mapa.getgMap().generujMape(Settings.getSize());
 
-                gridPane.generate(Mapa.getgMap());
+                GridPane.gridPane.generate(Mapa.getgMap());
             }
 
         }catch (NumberFormatException n){
             error.setVisible(true);
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (Exception ignored){
         }
 
     }
 
     Rozgrywka rozgrywka = null;
-    public void start(ActionEvent e) throws IOException, InterruptedException {
 
-        gridPane.update(Mapa.getgMap());
+    /**
+     * Metoda wywoływana przez przycisk Start/Stop
+     */
+
+    public void start(){
+
+        GridPane.gridPane.update(Mapa.getgMap());
         if(start.getText().equals("Start")){
             rozgrywka = new Rozgrywka();
             rozgrywka.start();

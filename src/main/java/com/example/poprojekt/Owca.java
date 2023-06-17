@@ -5,7 +5,6 @@ public class Owca extends Zwierze {
 
     public Owca() {
         ilosc++;
-        id++;
         nazwa = "Owca";
         this.moved = false;
         this.energia = new Energia(Settings.getMaxEnergySheep());
@@ -33,7 +32,7 @@ public class Owca extends Zwierze {
         return ilosc;
     }
 
-    public static void setIlosc(int ilosc) {
-        Owca.ilosc = ilosc;
+    public static void clear() {
+        Owca.ilosc = 0;
     }
 }

@@ -6,13 +6,12 @@ public class Wilk extends Zwierze {
         return ilosc;
     }
 
-    public static void setIlosc(int ilosc) {
-        Wilk.ilosc = ilosc;
+    public static void clear() {
+        Wilk.ilosc = 0;
     }
 
     public Wilk() {
         ilosc++;
-        id++;
         nazwa = "Wilk";
         this.moved = false;
         this.energia = new Energia(Settings.getMaxEnergyWolf());

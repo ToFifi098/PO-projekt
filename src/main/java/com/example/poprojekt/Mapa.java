@@ -1,26 +1,43 @@
 package com.example.poprojekt;
 
-
-
 import java.util.ArrayList;
 import java.util.Random;
+
+/**
+ * Klasa odpowiadająca za operacje na mapie
+ */
 
 public class Mapa {
 
     private static Mapa gMap;
 
-    private ArrayList<ArrayList<Pole>> mapa;
+    private final ArrayList<ArrayList<Pole>> mapa;
+
+    /**
+     * Tworzy instancję obiektu mapa
+     */
+
     public Mapa(){
         this.mapa = new ArrayList<>();
     }
+
+    /**
+     * Metoda ustawiająca globalną mapę
+     * @param gMap Mapa globalna
+     */
 
     public static void setgMap(Mapa gMap) {
         Mapa.gMap = gMap;
     }
 
+    /**
+     * Metoda generująca nową mapę
+     * @param rozmiar romzmiar nowej mapy
+     */
+
     public void generujMape(int rozmiar) {
-        Owca.setIlosc(0);
-        Wilk.setIlosc(0);
+        Owca.clear();
+        Wilk.clear();
 
         Random random = new Random();
 
@@ -59,7 +76,9 @@ public class Mapa {
 
         }
 
-
+    /**
+     * Metoda wykonująca ruch zwierząt na mapie globalnej
+      */
     public static void ruch() {
 
         for(int i = 0; i < Settings.getSize(); i++){
@@ -75,6 +94,13 @@ public class Mapa {
 
     private static final int[][] checkOrder =
             {{-1, 0, 1}, {0, -1, 1}, {0, 1, -1}, {-1, 1, 0}, {1, 0, -1}, {1,-1,0}};
+
+    /**
+     * Metoda sprawdzająca najbliższą okolicę Pola oraz zmienająca pozycję zwierząt
+     * @param i Współrzędna X pola na mapie
+     * @param j Współrzędna Y pola na mapie
+     * @param pole Pole z którego zwierzę ma się poruszyć
+     */
 
     private static void checkOkolica(int i, int j, Pole pole){
 
@@ -130,16 +156,10 @@ public class Mapa {
         }
 
 
-        int directionX;
-        int directionY;
-        do {
-            directionX = random.nextInt(3) - 1;
-            directionY = random.nextInt(3) - 1;
-        }while (directionY == 0 && directionX == 0);
 
-        int x = Math.min(Math.max(0, i + directionX), Settings.getSize()-1);
-        int y = Math.min(Math.max(0, j + directionY), Settings.getSize()-1);
-
+        int[] ints = generateRandom(i, j);
+        int x = ints[0];
+        int y = ints[1];
 
         Pole gPole = gMap.getMapa().get(x).get(y);
         if(gPole.getZwierze() == null){
@@ -157,9 +177,14 @@ public class Mapa {
         }
     }
 
-    public static void multiply(int i, int j, Zwierze zwierze, int a, int b){
+    /**
+     * Wygeneruj losowe współrzędne x, y w okolicy pola i, j
+     * @param i współrzędna X pola
+     * @param j współrzędna Y pola
+     * @return losowe współrzędne x,y
+     */
+    private static int[] generateRandom(int i, int j){
         Random random = new Random();
-
         int directionX;
         int directionY;
         do {
@@ -169,6 +194,22 @@ public class Mapa {
 
         int x = Math.min(Math.max(0, i + directionX), Settings.getSize()-1);
         int y = Math.min(Math.max(0, j + directionY), Settings.getSize()-1);
+
+        return new int[]{x, y};
+    }
+
+    /**
+     * Metoda rozmnażająca zwierzę, tylko po wcześniejszym ruchu zwierzęcia
+     * @param i Aktualny współrzędna X Zwierzęcia na mapie globalnej
+     * @param j Aktualny współrzędna Y Zwierzęcia na mapie globalnej
+     * @param zwierze Zwierze które ma być rozmnożone
+     * @param a Współrzędna X pola z którego zwierze zostało przeniesione
+     * @param b Współrzędna Y pola z którego zwierze zostało przeniesione
+     */
+    private static void multiply(int i, int j, Zwierze zwierze, int a, int b){
+        int[] ints = generateRandom(i, j);
+        int x = ints[0];
+        int y = ints[1];
 
         if(gMap.getMapa().get(x).get(y).getZwierze() == null){
             if(
@@ -186,10 +227,19 @@ public class Mapa {
         }
     }
 
+    /**
+     * Metoda zwracająca mapę globalną
+     * @return Mapa Globalna gMap
+     */
 
     public static Mapa getgMap() {
         return gMap;
     }
+
+    /**
+     * Metoda zwracająca mapę obiektu
+     * @return mapa obiektu
+     */
 
     public ArrayList<ArrayList<Pole>> getMapa() {
         return mapa;
