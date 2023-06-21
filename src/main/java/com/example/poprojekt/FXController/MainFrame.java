@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 
 /**
  * Szkielet oraz obsługa I/O
@@ -26,12 +27,28 @@ public class MainFrame {
     private BorderPane borderPane;
     @FXML
     private Button start;
+    @FXML
+    private Text shepCount;
+    @FXML
+    private Text wolfsCount;
+    @FXML
+    private Text roundCount;
+
+    public static Text gSheep;
+    public static Text gWolfs;
+    public static Text gCount;
+
 
     /**
      * Metoda wywoływana przez przycisk Generuj
      */
 
     public void generate(){
+        gSheep = shepCount;
+        gWolfs = wolfsCount;
+        gCount = roundCount;
+        MainFrame.gCount.setText(String.valueOf(0));
+
         start.setText("Start");
         try {
             int size = Integer.parseInt(tfSize.getText());

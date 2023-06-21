@@ -61,6 +61,8 @@ public class GridPane extends javafx.scene.layout.GridPane {
                 gridPane.add(tile, i , j);
             }
         }
+        MainFrame.gSheep.setText(String.valueOf(Owca.getOwca()));
+        MainFrame.gWolfs.setText(String.valueOf(Wilk.getWilk()));
     }
 
     /**
@@ -88,6 +90,8 @@ public class GridPane extends javafx.scene.layout.GridPane {
 
             }
         }
+        MainFrame.gSheep.setText(String.valueOf(Owca.getOwca()));
+        MainFrame.gWolfs.setText(String.valueOf(Wilk.getWilk()));
     }
 
     /**

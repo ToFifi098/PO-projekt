@@ -1,6 +1,7 @@
 package com.example.poprojekt;
 
 import com.example.poprojekt.FXController.GridPane;
+import com.example.poprojekt.FXController.MainFrame;
 import javafx.application.Platform;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -30,6 +31,7 @@ public class Rozgrywka extends Thread {
 
         do {
             numer++;
+            MainFrame.gCount.setText(String.valueOf(numer));
             Mapa.ruch();
                 Platform.runLater(() -> GridPane.gridPane.update(Mapa.getgMap()));
 
